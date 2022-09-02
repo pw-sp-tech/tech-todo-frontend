@@ -33,3 +33,7 @@ label {
 #form-switch:checked~#login-form {
     display: none
 }
+
+.loading-pulse-xs {
+    width: 20px;
+}

@@ -7,6 +7,8 @@ const registerEmail = document.querySelector("#register-email");
 const registerPass = document.querySelector("#register-password");
 const registerPass2 = document.querySelector("#register-password2");
 const accessToken = localStorage.getItem("access_token");
+const loginButton = document.querySelector("#login-button")
+const registerButton = document.querySelector("#register-button")
 const baseURL = `https://tech-todo-backend.herokuapp.com`;
 async function fetchData(url, options, append = 1) {
     let finalURL;
@@ -39,6 +41,7 @@ registerForm.addEventListener('submit', (e) => {
 
 function login(e) {
     e.preventDefault();
+    loginButton.innerHTML = `<img src="./assets/images/loading-pulse.svg" class="loading-pulse-xs" alt="" srcset="">`
     let email = loginEmail.value;
     let password = loginPass.value;
     fetchData('/auth/login', {
@@ -62,6 +65,7 @@ function login(e) {
             localStorage.setItem('user_id', id);
             window.location.href = 'index.html'
         } else {
+            loginButton.innerHTML = `Login`
             alert("something went wrong")
         }
     })
@@ -77,6 +81,7 @@ function register(e) {
         alert("Password doesn't match");
         return;
     }
+    registerButton.innerHTML = `<img src="./assets/images/loading-pulse.svg" class="loading-pulse-xs" alt="" srcset="">`
     fetchData('/auth/register', {
         method: "POST",
         headers: {
@@ -89,7 +94,9 @@ function register(e) {
             name
         })
     }).then(res => {
+        registerButton.innerHTML = `Register`
         if (res.status == "OKAY") {
+
             alert("Registered successfully.")
         } else {
             console.log("something went wrong")
