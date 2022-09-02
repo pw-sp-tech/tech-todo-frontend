@@ -176,7 +176,7 @@ function showInfo(el) {
     let desc = dataElement.description;
     let by = dataElement.by;
     let at = dataElement.at;
-    let movedBy = dataElement.movedBy;
+    let movedBy = dataElement.movedby;
     infoCardContent.innerHTML = desc;
     infoCardTagsBy.innerHTML = `Requested by ${by} ${moment(at).fromNow()}`;
     if (movedBy) {
@@ -263,14 +263,16 @@ function classChanged(b) {
             let id = card.querySelector('i').getAttribute('data-id');
             newData.push({
                 id,
-                status: "hold"
+                status: "hold",
+                movedby: userId
             })
         })
         doneCardContainer.querySelectorAll('.drop-card').forEach(card => {
             let id = card.querySelector('i').getAttribute('data-id');
             newData.push({
                 id,
-                status: "done"
+                status: "done",
+                movedby: userId
             })
         });
         let { changedElement, newStatus } = fetchChangedElement(newData);
@@ -281,6 +283,7 @@ function classChanged(b) {
             let obj = x;
             if (x.id == changedElement) {
                 obj.status = newStatus;
+                obj.movedby = userId
             }
             return obj;
         });
@@ -292,7 +295,8 @@ function classChanged(b) {
             },
             body: JSON.stringify({
                 id: changedElement,
-                status: newStatus
+                status: newStatus,
+                movedby: userId
             })
         }).then(res => {
             renderCards()
