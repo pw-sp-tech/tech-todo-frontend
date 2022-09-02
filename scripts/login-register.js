@@ -7,7 +7,7 @@ const registerEmail = document.querySelector("#register-email");
 const registerPass = document.querySelector("#register-password");
 const registerPass2 = document.querySelector("#register-password2");
 const accessToken = localStorage.getItem("access_token");
-const baseURL = `https://tech-todo-backend.herokuapp.com/`;
+const baseURL = `https://tech-todo-backend.herokuapp.com`;
 async function fetchData(url, options, append = 1) {
     let finalURL;
     if (append == 0) {
