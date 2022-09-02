@@ -106,10 +106,20 @@ function submitNewRequest() {
     }
     card.classList.remove('new')
     card.setAttribute('ondrop', "cardDropped(this, event)")
-    card.innerHTML = `<div  class="content">${value}</div><i class="fas fa-info-circle info" onmouseenter="showInfo(this)" onmouseout="hideInfo(this)" data-id="${newRequestId}"></i>`;
+    card.innerHTML = `<div  class="content">${value}</div><i class="fas fa-info-circle info" onmouseenter="showInfo(this)" onmouseout="hideInfo(this)" data-id="${newRequestId}"></i><div class="preloader pl-size-xs loader-card" data-id="${newRequestId}">
+                                    <div class="spinner-layer pl-white">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>`;
     card.classList.add(priority)
     submitNewRequestButton.style.display = 'none';
     addNewRequestButton.style.removeProperty('display');
+
     fetchData(`/todo`, {
         method: "POST",
         headers: {
@@ -127,6 +137,7 @@ function submitNewRequest() {
         })
     }).then(res => {
         if (res.status == "OKAY") {
+            document.querySelector(`.loader-card[data-id="${newRequestId}"]`).remove()
             AllData.push({
                 id: newRequestId,
                 status: "request",

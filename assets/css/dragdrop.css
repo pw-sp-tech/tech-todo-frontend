@@ -71,6 +71,14 @@
     transform: translate(-50%, -50%);
 }
 
+.loader-card {
+    width: 20px!important;
+    height: 20px!important;
+    position: absolute;
+    top: 24.5%;
+    right: 15%;
+}
+
 .info:hover {
     cursor: default;
 }
