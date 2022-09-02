@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/login-register.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='checkbox' id='form-switch'>
+    <form id='login-form' method='post'>
+        <h2>Login</h2>
+        <input id="login-email" type="email" placeholder="Email" required>
+        <input id="login-password" type="password" placeholder="Password" required>
+        <button type='submit'>Login</button>
+        <label for='form-switch'><span>Register</span></label>
+    </form>
+    <form id='register-form' method='post'>
+        <h2>Register</h2>
+        <input id="register-name" type="text" placeholder="Full Name" required>
+        <input id="register-email" type="email" placeholder="Email" required>
+        <input id="register-password" type="password" placeholder="Password" required>
+        <input id="register-password2" type="password" placeholder="Re Password" required>
+        <button type='submit'>Register</button>
+        <label for='form-switch'>Already Member ? Sign In Now..</label>
+    </form>
+</body>
+<script src="./scripts/login-register.js"></script>
+
+</html>

@@ -1,0 +1,117 @@
+.body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.add-new-row i {
+    cursor: pointer;
+    font-size: 35px;
+}
+
+.add-new-row i.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.board {
+    float: left;
+    position: relative;
+    width: 90%;
+    max-width: 90%;
+    height: auto;
+    margin: 8px;
+    background-color: lightgray;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2)
+}
+
+.drop-card {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 10px;
+    margin: 4px 0;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    cursor: move;
+    cursor: grab
+}
+
+.drop-card header {
+    float: left;
+    width: 100%;
+    padding: .5em;
+    background-color: lightgray;
+    text-transform: uppercase;
+    border-radius: 3px 3px 0 0
+}
+
+.drop-cardtitle {
+    float: left;
+    width: 100%
+}
+
+.add-new-row {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.info {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translate(-50%, -50%);
+}
+
+.info:hover {
+    cursor: default;
+}
+
+.info-card {
+    opacity: 0;
+    max-width: 40%;
+    pointer-events: none;
+    border-radius: 8px;
+    border: 2px solid rgb(0, 115, 255);
+    background-color: rgb(255, 255, 255);
+    padding: 5px 10px;
+    width: fit-content;
+    position: absolute;
+    top: 300px;
+    left: 100px;
+    transition: opacity 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transform: translate(20px, -50%);
+}
+
+.info-card .tags span {
+    background-color: red;
+}
+
+.drop-card {
+    color: white;
+    font-weight: 600;
+}
+
+.drop-card.high {
+    background-color: #f44336 !important;
+}
+
+.drop-card.medium {
+    background-color: #ff9800 !important;
+}
+
+.drop-card.low {
+    background-color: #009688 !important;
+}
+
+.priority {
+    margin-top: 10px;
+}

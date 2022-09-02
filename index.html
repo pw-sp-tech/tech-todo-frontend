@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Woozy - Bootstrap 4 Admin Dashboard Template</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+    <!-- Plugins Core Css -->
+    <link href="./assets/css/app.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/form.min.css">
+    <!-- Custom Css -->
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/dragdrop.css" rel="stylesheet" />
+    <!-- Theme style. You can choose a theme from css/themes instead of get all themes -->
+    <link href="./assets/css/all-themes.css" rel="stylesheet" />
+    <link href="./assets/css/index.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="light boxed-layout horizontal-layout">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30">
+                <img class="loading-img-spin" src="../../assets/images/loading.png" width="20" height="20" alt="admin">
+            </div>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Top Bar -->
+    <div class="container-fluid p-0">
+        <nav class="navbar">
+            <div class="navbar-header">
+                <a href="#" onClick="return false;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="#" onClick="return false;" class="bars"></a>
+                <a class="navbar-brand" href="index.html">
+                    <img src="../../assets/images/logo.png" alt="" />
+                    <span class="logo-name">Tech To Do</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown user_profile">
+                        <div class="chip dropdown-toggle" data-toggle="dropdown">
+                            Ramavtar
+                        </div>
+                        <i class="fas fa-power-off logout"></i>
+                    </li>
+
+                </ul>
+
+            </div>
+            <aside id="topsidebar" class="top-sidebar">
+                <!-- Menu -->
+                <div class="horizontal-menu">
+                    <ul class="horizontal-list team-list">
+
+                    </ul>
+                </div>
+            </aside>
+        </nav>
+    </div>
+    <!-- #Top Bar -->
+    <div class="container-fluid">
+        <div>
+        </div>
+        <section class="content">
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Requests</h2>
+                        </div>
+                        <div class="body">
+                            <div class="board">
+                                <div class="cards" id="b1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-new-row">
+                            <i class="fas fa-plus" id="add-row" onclick="addNewRequest()"></i>
+                            <i style="display: none;" class="fas fa-check" id="submit-row" onclick="submitNewRequest()"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Queued</h2>
+                        </div>
+                        <div class="body">
+                            <div class="board">
+                                <div class="cards" id="b2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>In</strong> Progress</h2>
+                        </div>
+                        <div class="body">
+                            <div class="board">
+                                <div class="cards" id="b3">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Done</strong> </h2>
+                        </div>
+                        <div class="body">
+                            <div class="board">
+                                <div class="cards" id="b4">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>On Hold</strong> </h2>
+                        </div>
+                        <div class="body">
+                            <div class="board">
+                                <div class="cards" id="b5">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="content" style="padding-bottom: 10px;"></div>
+                <div class="tags">
+                    <span class="label bg-teal m-b-10" id="by"></span>
+                    <span class="label bg-deep-orange m-b-10" id="movedby"></span>
+                </div>
+            </div>
+        </section>
+        <div class="defaults" style="display: none;">
+            <div class="new-container" style="position: relative;">
+                <div class="drop-card new">
+                    <input oninput="checkNewRequestInputs()" placeholder="request title..." class="new-request-input" type="text">
+                    <textarea oninput="checkNewRequestInputs()" rows="1" class="new-request-desc form-control no-resize auto-growth" placeholder="describe request..."></textarea>
+                    <div class="row priority">
+                        <div class="col-lg-4">
+                            <div class="form-check form-check-radio">
+                                <label>
+                                    <input value="high" name="group1" type="radio" />
+                                    <span>High</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-check form-check-radio">
+                                <label>
+                                    <input value="medium" name="group1" type="radio" />
+                                    <span>Medium</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-check form-check-radio disabled">
+                                <label>
+                                    <input value="low" name="group1" type="radio" checked/>
+                                    <span>Low</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="./scripts/app.min.js"></script>
+            <script src="./scripts/form.min.js"></script>
+            <!-- Custom Js -->
+            <script src="./scripts/admin.js"></script>
+            <script src="./scripts/jquery.multi-select.js"></script>
+            <script src="./scripts/bootstrap-colorpicker.js"></script>
+            <script src="./scripts/basic-form-elements.js"></script>
+            <script src="./scripts/advanced-form-elements.js"></script>
+            <script src="./scripts/moment.js"></script>
+            <script src="./scripts/dragdrop.js"></script>
+            <script src="./scripts/index.js"></script>
+</body>

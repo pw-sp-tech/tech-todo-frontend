@@ -1,0 +1,10 @@
+.user_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout {
+    margin: 5px 10px 5px;
+    cursor: pointer;
+}
