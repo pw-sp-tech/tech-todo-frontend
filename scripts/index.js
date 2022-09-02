@@ -232,12 +232,21 @@ function cardDropped(el, event) {
     console.log(event)
 }
 const body = document.body;
+let dropping = 0;
 // The function to call when the class changes
 function classChanged(b) {
 
-    if (b.classList.contains("gu-unselectable") || !b.classList.contains("submenu-closed")) {
+    if (b.classList.contains("gu-unselectable")) {
+        dropping = 1;
+        console.log(dropping)
+        return;
+    }
+    if (b.classList.contains("gu-unselectable") || !b.classList.contains("submenu-closed") || dropping == 0) {
+        console.log(dropping)
         return;
     } else {
+        console.log(dropping)
+        dropping = 0;
         if (!role) {
             let match = memberships.find(x => x.user == userId)
             if (match) {
@@ -371,9 +380,11 @@ function logout() {
 }
 
 function switchTeam(team) {
+    localStorage.setItem('active_team', team)
+    AllData = [];
     teamListUL.querySelectorAll('li').forEach(el => {
         el.classList.remove('active')
     })
-    teamListUL.querySelector(`li[data-id=${team}]`).classList.add('active')
+    teamListUL.querySelector(`li[data-id="${team}"]`).classList.add('active')
     fetchTodo(team)
 }
