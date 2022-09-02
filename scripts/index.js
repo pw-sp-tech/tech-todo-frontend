@@ -21,7 +21,7 @@ const lastActiveTeam = localStorage.getItem('active_team');
 if (!accessToken || !userId || !userName) {
     window.location.href = 'login-register.html'
 }
-const baseURL = `https://tech-todo.herokuapp.com`;
+const baseURL = `https://tech-todo-backend.herokuapp.com/`;
 async function fetchData(url, options, append = 1) {
     let finalURL;
     if (append == 0) {
