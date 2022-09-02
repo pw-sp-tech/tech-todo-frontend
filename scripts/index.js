@@ -201,9 +201,15 @@ function hideInfo() {
 }
 
 
-function fetchTodo() {
+function fetchTodo(teamParam) {
     AllData = [];
-    let team = teamListUL.querySelector('li.active').getAttribute('data-id');
+    let team;
+    if (!teamParam) {
+        team = teamListUL.querySelector('li.active').getAttribute('data-id');
+    } else {
+        team = teamParam
+    }
+
     fetchData(`/todo?team=${team}`).then(res => {
         if (res.status == "OKAY") {
             let data = res.data;
@@ -362,4 +368,12 @@ function logout() {
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     window.location.href = 'login-register.html'
+}
+
+function switchTeam(team) {
+    teamListUL.querySelectorAll('li').forEach(el => {
+        el.classList.remove('active')
+    })
+    teamListUL.querySelector(`li[data-id=${team}]`).classList.add('active')
+    fetchTodo(team)
 }
