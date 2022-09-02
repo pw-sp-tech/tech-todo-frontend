@@ -21,6 +21,7 @@ const lastActiveTeam = localStorage.getItem('active_team');
 if (!accessToken || !userId || !userName) {
     window.location.href = 'login-register.html'
 }
+document.querySelector('.user-name2').innerHTML = userName;
 const baseURL = `https://tech-todo-backend.herokuapp.com`;
 async function fetchData(url, options, append = 1) {
     let finalURL;
@@ -175,8 +176,8 @@ function showInfo(el) {
     let dataElement = AllData.find(x => x.id == id);
     let desc = dataElement.description;
     let by, movedBy;
-    if (dataElement.by) {
-        by = memberships.find(x => x.user == dataElement.by).name;
+    if (dataElement.requestedby) {
+        by = memberships.find(x => x.user == dataElement.requestedby).name;
     }
     if (dataElement.movedby) {
         movedBy = memberships.find(x => x.user == dataElement.movedby).name;
@@ -232,9 +233,12 @@ function classChanged(b) {
         return;
     } else {
         if (!role) {
-            role = memberships.find(x => x.user == userId).role;
+            let match = memberships.find(x => x.user == userId)
+            if (match) {
+                role = match.role;
+            }
         }
-        if (role == 'client') {
+        if (role == 'client' || !role) {
             console.log('client')
             renderCards()
             return;
@@ -350,4 +354,12 @@ function renderCards() {
         newCard.innerHTML = `<div class="content">${el.title}</div><i class="fas fa-info-circle info" onmouseenter="showInfo(this)" onmouseout="hideInfo(this)" data-id="${el.id}"></i>`;
         newCard.classList.add(el.priority);
     });
+}
+
+
+function logout() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_name');
+    window.location.href = 'login-register.html'
 }
