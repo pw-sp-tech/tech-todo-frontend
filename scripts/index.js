@@ -174,9 +174,15 @@ function showInfo(el) {
     let id = el.getAttribute('data-id');
     let dataElement = AllData.find(x => x.id == id);
     let desc = dataElement.description;
-    let by = dataElement.by;
+    let by, movedBy;
+    if (dataElement.by) {
+        by = memberships.find(x => x.user == dataElement.by).name;
+    }
+    if (dataElement.movedby) {
+        movedBy = memberships.find(x => x.user == dataElement.movedby).name;
+    }
     let at = dataElement.at;
-    let movedBy = dataElement.movedby;
+
     infoCardContent.innerHTML = desc;
     infoCardTagsBy.innerHTML = `Requested by ${by} ${moment(at).fromNow()}`;
     if (movedBy) {
