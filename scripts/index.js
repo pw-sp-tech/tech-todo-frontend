@@ -226,7 +226,7 @@ function fetchTodo(teamParam) {
         if (res.status == "OKAY") {
             let data = res.data;
             AllData = data;
-            AllData.sort(compare)
+            AllData.sort(compare).reverse()
             renderCards()
                 // The mutation observer
             var ob = new MutationObserver(function() {
@@ -407,7 +407,7 @@ function switchTeam(team) {
     fetchTodo(team)
 }
 
-function compare(b, a) {
+function compare(a, b) {
     if ((a.priority == 'low' && b.priority == 'medium') || (a.priority == 'medium' && b.priority == 'high')) {
         return -1;
     }
