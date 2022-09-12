@@ -226,6 +226,7 @@ function fetchTodo(teamParam) {
         if (res.status == "OKAY") {
             let data = res.data;
             AllData = data;
+            AllData.sort(compare)
             renderCards()
                 // The mutation observer
             var ob = new MutationObserver(function() {
@@ -358,7 +359,6 @@ function fetchChangedElement(newData) {
 
 
 function renderCards() {
-    AllData.sort(compare)
     requestCardContainer.innerHTML = ``;
     queueCardContainer.innerHTML = ``;
     doneCardContainer.innerHTML = ``;
