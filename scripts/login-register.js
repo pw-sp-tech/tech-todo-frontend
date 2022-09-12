@@ -72,34 +72,35 @@ function login(e) {
 }
 
 function register(e) {
-    e.preventDefault();
-    let name = registerName.value
-    let email = registerEmail.value;
-    let password = registerPass.value;
-    let password2 = registerPass2.value;
-    if (password !== password2) {
-        alert("Password doesn't match");
-        return;
-    }
-    registerButton.innerHTML = `<img src="./assets/images/loading-pulse.svg" class="loading-pulse-xs" alt="" srcset="">`
-    fetchData('/auth/register', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email,
-            password,
-            password,
-            name
-        })
-    }).then(res => {
-        registerButton.innerHTML = `Register`
-        if (res.status == "OKAY") {
+    alert("Feature removed by developers.")
+        // e.preventDefault();
+        // let name = registerName.value
+        // let email = registerEmail.value;
+        // let password = registerPass.value;
+        // let password2 = registerPass2.value;
+        // if (password !== password2) {
+        //     alert("Password doesn't match");
+        //     return;
+        // }
+        // registerButton.innerHTML = `<img src="./assets/images/loading-pulse.svg" class="loading-pulse-xs" alt="" srcset="">`
+        // fetchData('/auth/register', {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         email,
+        //         password,
+        //         password,
+        //         name
+        //     })
+        // }).then(res => {
+        //     registerButton.innerHTML = `Register`
+        //     if (res.status == "OKAY") {
 
-            alert("Registered successfully.")
-        } else {
-            console.log("something went wrong")
-        }
-    })
+    //         alert("Registered successfully.")
+    //     } else {
+    //         console.log("something went wrong")
+    //     }
+    // })
 }
