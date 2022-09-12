@@ -147,7 +147,8 @@ function submitNewRequest() {
                 at: new Date(),
                 priority,
                 team: lastActiveTeam
-            })
+            });
+            renderCards()
         }
     })
 
