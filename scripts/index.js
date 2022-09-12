@@ -375,6 +375,7 @@ function renderCards() {
             newCard.classList.add(el.priority);
         } else if (el.status == 'done') {
             doneCardContainer.appendChild(newCard);
+            newCard.classList.add("done");
         } else if (el.status == 'hold') {
             holdCardContainer.appendChild(newCard);
             newCard.classList.add(el.priority);

@@ -120,6 +120,10 @@
     background-color: #009688 !important;
 }
 
+.drop-card.done {
+    background-color: #607d8b !important;
+}
+
 .priority {
     margin-top: 10px;
 }
