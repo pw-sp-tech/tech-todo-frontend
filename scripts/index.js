@@ -366,19 +366,23 @@ function renderCards() {
         let newCard = document.createElement('div');
         if (el.status == 'request') {
             requestCardContainer.appendChild(newCard);
+            newCard.classList.add(el.priority);
         } else if (el.status == 'queued') {
             queueCardContainer.appendChild(newCard);
+            newCard.classList.add(el.priority);
         } else if (el.status == 'wip') {
             inProgressCardContainer.appendChild(newCard);
+            newCard.classList.add(el.priority);
         } else if (el.status == 'done') {
             doneCardContainer.appendChild(newCard);
         } else if (el.status == 'hold') {
             holdCardContainer.appendChild(newCard);
+            newCard.classList.add(el.priority);
         }
         newCard.classList.add('drop-card');
         newCard.setAttribute('ondrop', "cardDropped(this, event)")
         newCard.innerHTML = `<div class="content">${el.title}</div><i class="fas fa-info-circle info" onmouseenter="showInfo(this)" onmouseout="hideInfo(this)" data-id="${el.id}"></i>`;
-        newCard.classList.add(el.priority);
+
     });
 }
 
