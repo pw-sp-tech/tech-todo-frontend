@@ -68,7 +68,7 @@ fetchData(`/teams`, {
         teamListUL.querySelector('li').classList.add('active');
         localStorage.setItem('active_team', teams[0].id)
         fetchTodo();
-    } else {
+    } else if (teamListUL.querySelector(`li[data-id="${lastActiveTeam}"]`)) {
         teamListUL.querySelector(`li[data-id="${lastActiveTeam}"]`).classList.add('active');
         fetchTodo();
     }
@@ -357,6 +357,7 @@ function fetchChangedElement(newData) {
 
 
 function renderCards() {
+    AllData.sort(compare)
     requestCardContainer.innerHTML = ``;
     queueCardContainer.innerHTML = ``;
     doneCardContainer.innerHTML = ``;
@@ -403,4 +404,14 @@ function switchTeam(team) {
     })
     teamListUL.querySelector(`li[data-id="${team}"]`).classList.add('active')
     fetchTodo(team)
+}
+
+function compare(b, a) {
+    if ((a.priority == 'low' && b.priority == 'medium') || (a.priority == 'medium' && b.priority == 'high')) {
+        return -1;
+    }
+    if ((a.priority == 'medium' && b.priority == 'low') || (a.priority == 'high' && b.priority == 'medium')) {
+        return 1;
+    }
+    return 0;
 }
